@@ -10,6 +10,20 @@
     </head>
 
     <body>
+        <script type="text/javascript">
+            function inputCheck($this, max){
+                let str = $this.value;
+              
+                if(parseFloat(str)<1){
+                  str="1";
+                }
+                if(parseFloat(str)>max){
+                  str=max;
+                }    
+                $this.value=str;
+              }
+        </script>
+
 
         <img src="https://blog-imgs-158.fc2.com/q/u/a/quanzoo/risksim.png" alt="title.png" width="700">
         <br>
@@ -25,15 +39,15 @@
                     <tbody>
                         <tr>
                             <th>リスク</th>
-                            <td><input type="number" id="vol" class="py-input" step="0.5" min="0" style="text-align:right;"/>%</td>
+                            <td><input type="number" id="vol" class="py-input" step="1" min="1" max="30" oninput="inputCheck(this, 30)"  style="text-align:right;"/>%</td>
                         </tr>
                         <tr>
                             <th>投資金額</th>
-                            <td><input type="number" id="amount" class="py-input" step="1" min="1" style="text-align:right;"/>万円</td>
+                            <td><input type="number" id="amount" class="py-input" step="1" min="1" max="9999" oninput="inputCheck(this, 9999)" style="text-align:right;"/>万円</td>
                         </tr>
                         <tr>
                             <th>投資期間</th>
-                            <td><input type="number" id="year" class="py-input" step="1" min="1" style="text-align:right;"/>年</td>
+                            <td><input type="number" id="year" class="py-input" step="1" min="1" max="50" oninput="inputCheck(this, 50)" style="text-align:right;"/>年</td>
                         </tr>
                     </tbody>
                 </table>
@@ -44,7 +58,7 @@
                 </button>
                 </center>
                 <br>
-                <div id="error"></div>
+
             </div>
             <div id="child2" style=	"padding: 1em;">
                 <br>
@@ -52,8 +66,9 @@
                     <br>
                     <b style="font-size:1.2em;">　使用方法</b>
                     <ul>
-                        <li>体感したいリスク量を正の値で入力してください</li>
-                        <li>投資期間は1以上の整数を入力してください</li> 
+                        <li>体感したいリスク量を1～30%の範囲で入力してください</li>
+                        <li>投資金額は1～9999万円の範囲で入力してください</li>
+                        <li>投資期間は1～50年の範囲で入力してください</li> 
                         <li>シミュレーション実行🎢を押すとリスク量に基づいたシナリオが一つランダムに生成されます</li>
                         <li>ボタンを押し直すと新たなシナリオがまた一つランダムに生成されます</li>
                         <li>何度も押すことで取っているリスクがどのようなギャンブルになっているのか体感してください！</li>
@@ -63,12 +78,15 @@
             </div>
         </div>
         <br>
-        <div id="error" hidden></div>
-            <br>
-            　　　
         <br>
         <br>
-        
+        <div id="error" hidden>
+            <h4 class=portopt>エラー！</h4>
+            全ての入力欄に値を入力してください<br>
+            
+        </div>
+        <br>
+        <br>       
 
         <div id="output" hidden>
             <h4 class=portopt>シミュレーション結果</h4>
@@ -83,12 +101,15 @@
             <br>
             <br>
 
-            <div style="width:600px; height:450px">
+            <div style="width:800px; height:600px">
                 <canvas id="myChart" width="400" height="300"></canvas>
             </div>
             </center>
         </div>
 <br>
+
+
+
         <div id="ref" hidden>
             <h4 class=portopt>参考情報</h4>
             <br>

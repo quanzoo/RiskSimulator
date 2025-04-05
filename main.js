@@ -6,6 +6,8 @@ document.querySelector("input#vol").value = 20;
 document.querySelector("input#amount").value = 100;
 document.querySelector("input#year").value = 1;
 
+
+
 function rnorm(){
   return Math.sqrt(-2 * Math.log(1 - Math.random())) * Math.cos(2 * Math.PI * Math.random());
 }
@@ -43,6 +45,8 @@ function ManYen(value) {
 
 function Simulation(){
 
+  document.querySelector("div#error").style.display = "None";
+
   // 1年の営業日数
   const ndays_per_year = 260;
 
@@ -50,6 +54,11 @@ function Simulation(){
   var vol = parseFloat(document.querySelector("input#vol").value)/100;
   var init_value = parseFloat(document.querySelector("input#amount").value);
   var year = parseInt(document.querySelector("input#year").value);
+
+  if (isNaN(vol) || isNaN(init_value) || isNaN(year)) {
+    document.querySelector("div#error").style.display = "block";
+    return
+  }
 
   // 平均年率リターン設定
   var ann_mu = vol * 0.5;
