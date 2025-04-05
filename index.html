@@ -1,0 +1,127 @@
+<!doctype html>
+
+<html>
+    <head>
+
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+
+        <link rel="stylesheet" type="text/css" href="https://blog-imgs-158.fc2.com/q/u/a/quanzoo/portopt.css">
+
+    </head>
+
+    <body>
+
+        <img src="https://blog-imgs-158.fc2.com/q/u/a/quanzoo/risksim.png" alt="title.png" width="700">
+        <br>
+        <br>
+        投資におけるリスク量とは何なのか…？それを体感するためのシミュレーターです<br>
+        <br>
+        <h4 class=portopt>設定</h4>
+        <br>
+        <div id="parent">
+            <div id="child1">
+                <center>
+                <table class=portopt>
+                    <tbody>
+                        <tr>
+                            <th>リスク</th>
+                            <td><input type="number" id="vol" class="py-input" step="0.5" min="0" style="text-align:right;"/>%</td>
+                        </tr>
+                        <tr>
+                            <th>投資金額</th>
+                            <td><input type="number" id="amount" class="py-input" step="1" min="1" style="text-align:right;"/>万円</td>
+                        </tr>
+                        <tr>
+                            <th>投資期間</th>
+                            <td><input type="number" id="year" class="py-input" step="1" min="1" style="text-align:right;"/>年</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br>
+                <br>
+                <button type="submit" id="btn-load" onclick="Simulation()">
+                シミュレーション実行🎢
+                </button>
+                </center>
+                <br>
+                <div id="error"></div>
+            </div>
+            <div id="child2" style=	"padding: 1em;">
+                <br>
+                <div style=	"padding: 0.1em; border-left:solid 5px #e9b3a3; background-color:#F9F8F8;">
+                    <br>
+                    <b style="font-size:1.2em;">　使用方法</b>
+                    <ul>
+                        <li>体感したいリスク量を正の値で入力してください</li>
+                        <li>投資期間は1以上の整数を入力してください</li> 
+                        <li>シミュレーション実行🎢を押すとリスク量に基づいたシナリオが一つランダムに生成されます</li>
+                        <li>ボタンを押し直すと新たなシナリオがまた一つランダムに生成されます</li>
+                        <li>何度も押すことで取っているリスクがどのようなギャンブルになっているのか体感してください！</li>
+                    </ul>
+                </div>
+                <br>
+            </div>
+        </div>
+        <br>
+        <div id="error" hidden></div>
+            <br>
+            　　　
+        <br>
+        <br>
+        
+
+        <div id="output" hidden>
+            <h4 class=portopt>シミュレーション結果</h4>
+            <center>
+            <br>
+            <button type="submit" id="btn-load" onclick="Simulation()">
+                シミュレーション再実行
+            </button>
+            <br>
+            あなたの損益は <span id="pl" style="font-size:1.8em;"></span> でした
+            <img id="sima" src="" width="50px" height="50px">
+            <br>
+            <br>
+
+            <div style="width:600px; height:450px">
+                <canvas id="myChart" width="400" height="300"></canvas>
+            </div>
+            </center>
+        </div>
+<br>
+        <div id="ref" hidden>
+            <h4 class=portopt>参考情報</h4>
+            <br>
+            <div>今回のリスク量、投資金額、投資期間では</div><br>
+            <div><span id="prob_loss" style="font-size:1.8em;"></span><span id="prob_loss2"></span></div>
+            <div><span id="prob_10loss" style="font-size:1.8em;"></span><span id="prob_10loss2"></span></div>
+            
+        </div>
+
+<br>
+        <div>
+            <h4 class=portopt>計算前提</h4>
+
+            <ul>
+                <li>日次リターンが正規分布に従うと仮定</li>
+                <li>リターンはリスク量×0.5</li>
+            </ul>
+            <br>
+            <br>
+            <h4 class=portopt>更新履歴</h4>
+            <br>
+            2025.04.05 ツール公開<br>
+            <br>
+            <br>
+            <br>
+            ※ 提示データや分析内容を含め、本ページは投資勧誘や投資アドバイスを目的としたものではありません。<br>
+            ※ 分析結果は投資を推奨するものではありません。分析結果を利用して行われた行為に対する責任を負いません。<br>
+            ※ 正確性や完全性を保証するものではありません。<br>
+            
+        </div>        
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script type="text/javascript" src="main.js"></script>
+
+    </body>
+</html>
